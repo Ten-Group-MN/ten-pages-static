@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <style>
       html,
-      body {
+      *{
+        font-family: 'Roboto', sans-serif;
+      }
+      body {    
         padding: 0;
         margin: 0;
         background-color: #ffffff;
@@ -34,7 +34,6 @@
       }
 
       h1 {
-        font-family: "Exo 2";
         font-style: normal;
         font-weight: bold;
         font-size: 5vh;
@@ -45,9 +44,8 @@
       }
 
       p {
-        font-family: Exo 2;
         font-style: normal;
-        font-weight: 300;
+        font-weight: 400;
         font-size: 22px;
         line-height: 26px;
         max-width: 80vw;
@@ -56,7 +54,6 @@
 
       @media screen and (max-width: 600px) {
         .time {
-        font-family: Exo 2;
         font-style: normal;
         font-weight: bold;
         font-size: 30px;
@@ -68,7 +65,6 @@
       }
       @media screen and (min-width: 601px) {
         .time {
-        font-family: Exo 2;
         font-style: normal;
         font-weight: bold;
         font-size: 30px;
@@ -101,14 +97,12 @@
       }
 
       .squares {
-        font-family: Exo 2;
         font-style: normal;
         font-weight: bold;
         color: #ffffff;
       }
 
       .duration {
-        font-family: Exo 2;
         font-style: normal;
         font-weight: normal;
         font-size: 0.8rem;
@@ -122,8 +116,6 @@
         position: absolute;
         bottom: 20px;
         right: 20px;
-          
-        font-family: Roboto;
         font-style: normal;
         font-weight: normal;
         font-size: 12px;
@@ -137,31 +129,31 @@
   <body>
     <div id="app">
       <h1>Тун удахгүй...</h1>
-      <p>Вэб сайтын засварын ажил явагдаж байна</p>
+      <p id="dialog">Вэб сайтын засварын ажил явагдаж байна</p>
       <div id="timesquares">
         <div class="squares">
-          <p class="time">07</p>
+          <p id="day" class="time">07</p>
           <p class="duration">Өдөр</p>
         </div>
         <div class="squares">
-          <p class="time">03</p>
+          <p id="hour" class="time">03</p>
           <p class="duration">цаг</p>
         </div>
         <div class="squares">
-          <p class="time">03</p>
+          <p id="minute" class="time">03</p>
           <p class="duration">минут</p>
         </div>
         <div class="squares">
-          <p class="time">18</p>
+          <p id="second" class="time">18</p>
           <p class="duration">секунд</p>
         </div>
       </div>
       <div id="sociallinks">
-        <a href="">
+        <a href="https://discord.gg/QEC2SzbEjj">
           <svg
             width="24"
             height="24"
-            viewBox="0 0 20 22"
+            viewbox="0 0 20 22"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -171,11 +163,11 @@
             />
           </svg>
         </a>
-        <a href="">
+        <a href="https://www.instagram.com/tenmangateam/">
           <svg
             width="24"
             height="24"
-            viewBox="0 0 22 22"
+            viewbox="0 0 22 22"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -187,11 +179,11 @@
             />
           </svg>
         </a>
-        <a href="">
+        <a href="https://www.facebook.com/tenmangateam">
           <svg
             width="24"
             height="24"
-            viewBox="0 0 24 24"
+            viewbox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -212,6 +204,35 @@
   </body>
 
   <script>
-    let date = new Date(2021, 5, 20, 0, 0, 0, 0);
+var countDownDate = new Date("June 10, 2021 15:37:25").getTime();
+var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("day").innerHTML = days
+  document.getElementById("hour").innerHTML = hours
+  document.getElementById("minute").innerHTML = minutes
+  document.getElementById("second").innerHTML = seconds
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("day").innerHTML = "😍"
+    document.getElementById("hour").innerHTML = "🥰"
+    document.getElementById("minute").innerHTML = "😘"
+    document.getElementById("second").innerHTML = "🤩" 
+
+    document.getElementsByClassName("duration").item(0).innerHTML="Бид"
+    document.getElementsByClassName("duration").item(1).innerHTML="Удахгүй"
+    document.getElementsByClassName("duration").item(2).innerHTML="Нээлтээ"
+    document.getElementsByClassName("duration").item(3).innerHTML="Хийнэ"
+
+    document.getElementById("dialog").innerHTML = "Удаан хүлээсэнд баярлалаа."
+  }
+}, 1000);
+
   </script>
 </html>
